@@ -1,7 +1,29 @@
+using BusinessLayer.Abstract;
+using Microsoft.AspNetCore.Authentication.Cookies;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+        .AddCookie(options =>
+        {
+            options.LoginPath = "/Student/Index";     
+        });
+//builder.Services.AddAuthorization(options =>
+//{
+//    options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
+//    options.AddPolicy("UserOnly", policy => policy.RequireRole("User"));
+//});
+    builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IUserService, UserService>();
+//builder.Services.AddScoped<IRoleService, RoleService>();
+
+
+
+
 
 var app = builder.Build();
 
@@ -25,3 +47,8 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminRole", policy => policy.RequireRole("Admin"));
+    options.AddPolicy("StudentRole", policy => policy.RequireRole("Student"));
+});

@@ -10,6 +10,7 @@ namespace DataAccessLayer.Concrete
 {
     public class Context:DbContext
     {
+        public Context(DbContextOptions<Context> options): base(options) { }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("server=LAPTOP-IEH31APK;database=StudentCard;user id=sa;password=1234;TrustServerCertificate=True;");
