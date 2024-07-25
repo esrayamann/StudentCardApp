@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Abstract;
 using DataAccessLayer.Abstract;
+using DataAccessLayer.EntityFramework;
 using DataAccessLayer.Repositories;
 using EntityLayer.Concrete;
 using System;
@@ -26,6 +27,11 @@ namespace BusinessLayer.Concrete
 		public List<User> GetList()
 		{
 			return _userDal.GetListAll();
+		}
+		public bool ValidateUser(string email, string password)//
+		{
+			User user = UserRepository.GetUserByEmailAndPasssword(email, password);
+			return user != null;
 		}
 	}
 }
