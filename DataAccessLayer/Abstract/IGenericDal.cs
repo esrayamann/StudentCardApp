@@ -12,8 +12,8 @@ namespace DataAccessLayer.Abstract
         void Insert(T t);
         void Delete(T t);
         void Update(T t);
-        List<T> GetAll();
+        List<T> GetListAll();
         T GetByID(int id);
-        List<T> GetAllByType(Expression<Func<T, bool>> filter);// 
+        List<T> GetListByType(Expression<Func<T, bool>> filter);// 
     }
 }
