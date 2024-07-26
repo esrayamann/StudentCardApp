@@ -21,7 +21,7 @@ body a{
 	font-weight:400;
 	font-family: 'Titillium Web', sans-serif;
 }
-input[type="button"],input[type="submit"],input [type="text"],input [type="email"]{
+input[type="button"],input[type="submit"],input [type="text"]/*,input [type="email"]*/{
 	transition:0.5s all;
 	-webkit-transition:0.5s all;
 	-moz-transition:0.5s all;
