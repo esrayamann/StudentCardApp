@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Abstract
 {
-	internal interface IRoleDal:IGenericDal<Role>
-	{
-	}
+    public interface IRoleDal : IGenericDal<Role>
+    {
+        void InsertRole(Role role);
+    }
 }

@@ -3,18 +3,18 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace StudentCardApp.Controllers
 {
-	public class SidebarController:Controller
-	{
+    public class RoleController : Controller
+    {
         private readonly IRoleService _roleService;
-        public SidebarController(IRoleService roleService)
+        public RoleController(IRoleService roleService)
         {
             _roleService = roleService;
         }
-
         public async Task<IActionResult> Index()
-		{
-            var roles = await _roleService.GetAllRolesAsync();
-            return View(roles);
+        {
+            var roles= await _roleService.GetAllRolesAsync();
+            return View(roles); 
         }
-	}
+        
+    }
 }
