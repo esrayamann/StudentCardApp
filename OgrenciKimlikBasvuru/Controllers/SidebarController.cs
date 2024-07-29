@@ -10,7 +10,6 @@ namespace StudentCardApp.Controllers
         {
             _roleService = roleService;
         }
-
         public async Task<IActionResult> Index()
 		{
             var roles = await _roleService.GetAllRolesAsync();

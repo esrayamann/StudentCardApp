@@ -33,5 +33,20 @@ namespace BusinessLayer.Concrete
 			User user = UserRepository.GetUserByEmailAndPasssword(email, password);
 			return user != null;
 		}
-	}
+
+        public Task<User> GetRoleByIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<User>> GetAllUsersAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<User> GetUserByIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

@@ -10,5 +10,8 @@ namespace BusinessLayer.Abstract
 	public interface IUserService
 	{
 		void UserAdd(User user);
-	}
+        Task<User> GetUserByIdAsync(int id);
+        Task<IEnumerable<User>> GetAllUsersAsync();
+    
+    }
 }

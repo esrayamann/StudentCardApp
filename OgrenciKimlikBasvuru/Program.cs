@@ -13,7 +13,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<Context>();//
 
 builder.Services.AddScoped<UserRepository/*, UserRepository*/>();
-builder.Services.AddScoped<IUserService, UserService>();//
+builder.Services.AddScoped<IUserService, UserService>();
 //builder.Services.AddTransient<IRoleService, RoleService>();//
 builder.Services.AddScoped<IRoleService, RoleService>();
 
