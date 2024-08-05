@@ -1,0 +1,68 @@
+﻿@using EntityLayer.Concrete
+@model List<Role>
+@* @model IEnumerable<Role> *@
+@using BusinessLayer.Concrete
+@using DataAccessLayer.Concrete
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_SidebarLayout.cshtml";
+}
+<title>Roller</title>
+<html>
+<head>
+    <style>
+        table, td, th {
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            padding: 15px;
+        }
+
+        .button {
+            background-color: #f08080;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Rolleri Yönet</h2>
+
+    <p>Rol silme ve yeni rol ekleme işemleri için</p>
+<br />
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Rol</th>
+        <th>Sil</th>
+      @*   <th>Güncelle</th> *@
+        @*   <th>Detaylar</th> *@
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Ad</td>
+            <td><a href="/Role/DeleteRole/@item.Id" class="button">Sil</a></td>
+@*             <td><a href="/Role/GetAllRole/@item.Id" class="btn btn-success">Güncelle</a></td> *@
+        </tr>
+    }
+</table>
+<a href="/Role/InsertRole/" class="button">Yeni Rol Ekle</a>
+</body>
+</html>

@@ -1,30 +1,7 @@
-﻿@using EntityLayer.Concrete
-@model List<Role>
-@* @model IEnumerable<Role> *@
-@using BusinessLayer.Concrete
-@using DataAccessLayer.Concrete
+﻿
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_SidebarLayout.cshtml";
 }
 
-<h1>Index</h1>
-<br/>
-<table class="table table-bordered">
-    <tr>
-        <th>Id</th>
-        <th>Rol</th>
-        <th>Sil</th>
-        <th>Güncelle</th>
-      @*   <th>Detaylar</th> *@
-    </tr>
-    @foreach(var item in Model)
-    {
-        <tr>
-            <td>@item.Id</td>
-            <td>@item.Ad</td>
-            <td><a href="/Role/DeleteRole/@item.Id" class="btn btn-danger">Sil</a></td>
-            <td><a href="/Role/GetAllRole/@item.Id" class="btn btn-success">Güncelle</a></td>
-        </tr>
-    }
-</table>
+<h2>admin sayfası</h2>

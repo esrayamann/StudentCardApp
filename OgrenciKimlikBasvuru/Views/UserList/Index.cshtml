@@ -7,16 +7,38 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_SidebarLayout.cshtml";
 }
+<html>
+<head>
+    <style>
+        table, td, th {
+            border: 1px solid #ddd;
+            text-align: left;
+        }
 
-<h1>Index</h1>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
 
 <br />
 <table class="table table-bordered">
     <tr>
         <th>Id</th>
         <th>Ad</th>
-        <th>Sil</th>
-        <th>Güncelle</th>
+        <th>Soyad</th>
+        <th>Öğrenci No</th>
+        <th>Bölüm</th>
+        <th>Email</th>
+        <th>Adres</th>
+        <th>Rolü</th>
+        <th>Rol Güncelleme</th>
         @*   <th>Detaylar</th> *@
     </tr>
     @foreach (var item in Model)
@@ -24,7 +46,14 @@
         <tr>
             <td>@item.Id</td>
             <td>@item.Ad</td>
+            <td>@item.Soyad</td>
+            <td>@item.OgrNo</td>
+            <td>@item.Bolum</td>
+            <td>@item.Email</td>
+            <td>@item.Adres</td>
            
         </tr>
     }
 </table>
+</body>
+</html>

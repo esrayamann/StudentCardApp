@@ -10,7 +10,7 @@ namespace DataAccessLayer.Repositories
 {
 	public class UserRepository
 	{
-		private string connectionString = "your_connection_string_here";
+        private string connectionString = "your_connection_string_here";
 
 		public static User GetUserByEmailAndPasssword(string email, string password)//
 		{
@@ -37,7 +37,7 @@ namespace DataAccessLayer.Repositories
 							{
 								Id = (int)reader["Id"],
 								Email = reader["Email"].ToString(),
-								Şifre = reader["Password"].ToString()
+								Sifre = reader["Password"].ToString()
 							};
 						}
 					}

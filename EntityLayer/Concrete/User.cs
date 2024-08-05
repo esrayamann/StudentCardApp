@@ -15,7 +15,7 @@ namespace EntityLayer.Concrete
         public string OgrNo { get; set; }
         public string Bolum { get; set; }
         public string Adres { get; set; }
-        public string Şifre { get; set; }
+        public string Sifre { get; set; }
         public ICollection<UserRole> UserRoles { get; set; }
     }
 }

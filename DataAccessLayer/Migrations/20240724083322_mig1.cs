@@ -35,7 +35,7 @@ namespace DataAccessLayer.Migrations
                     OgrNo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Bolum = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Adres = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Şifre = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Sifre = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

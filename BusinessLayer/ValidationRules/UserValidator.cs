@@ -14,7 +14,7 @@ namespace BusinessLayer.ValidationRules
 		{
 			RuleFor(x => x.Ad).NotEmpty().WithMessage("Adı soyadı kısmı boş geçilemez");
 			RuleFor(x => x.Email).NotEmpty().WithMessage("Mail adresi boş geçilemez");
-			RuleFor(x => x.Şifre).NotEmpty().WithMessage("Şifre boş geçilemez");
+			RuleFor(x => x.Sifre).NotEmpty().WithMessage("Şifre boş geçilemez");
 		}
 	}
 }

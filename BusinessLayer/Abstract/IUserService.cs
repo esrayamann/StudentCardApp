@@ -12,6 +12,7 @@ namespace BusinessLayer.Abstract
 		void UserAdd(User user);
         Task<User> GetUserByIdAsync(int id);
         Task<IEnumerable<User>> GetAllUsersAsync();
+
     
     }
 }

@@ -17,6 +17,13 @@ builder.Services.AddScoped<IUserService, UserService>();
 //builder.Services.AddTransient<IRoleService, RoleService>();//
 builder.Services.AddScoped<IRoleService, RoleService>();
 
+builder.Services.AddAuthentication("CookieAuthentication")
+    .AddCookie("CookieAuthentication", options =>
+    {
+        options.Cookie.Name = "UserLoginCookie"; // Çerez adý
+        options.LoginPath = "/Login/GirisYap"; // Giriþ sayfasý yolu
+        options.AccessDeniedPath = "/Home/AccessDenied"; 
+    });
 
 var app = builder.Build();
 

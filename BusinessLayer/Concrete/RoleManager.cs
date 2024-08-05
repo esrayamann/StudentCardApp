@@ -17,30 +17,46 @@ namespace BusinessLayer.Concrete
             _roleDal = roleDal;
         }
 
-        public Task AddRoleAsync(Role role)
+        public async Task AddRoleAsync(Role role)
         {
-            throw new NotImplementedException();
+            if (role == null)
+            {
+                throw new ArgumentNullException(nameof(role));
+            }
+
+            await _roleDal.InsertAsync(role);
         }
 
-        public Task DeleteRoleAsync(int id)
+        public async Task DeleteRoleAsync(int id)
         {
-            throw new NotImplementedException();
+            var role = await _roleDal.GetByIdAsync(id);
+            if (role == null)
+            {
+                throw new KeyNotFoundException("Rol bulunamadı");
+            }
+
+            await _roleDal.DeleteAsync(role);
         }
 
-        public Task<IEnumerable<Role>> GetAllRolesAsync()
+        public async Task<IEnumerable<Role>> GetAllRolesAsync()
         {
-            throw new NotImplementedException();
+             return await _roleDal.GetAllAsync();
         }
 
-        public Task<Role> GetRoleByIdAsync(int id)
+        public async Task<Role> GetRoleByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _roleDal.GetByIdAsync(id);
         }
 
 
-        public Task UpdateRoleAsync(Role role)
+        public async Task UpdateRoleAsync(Role role)
         {
-            throw new NotImplementedException();
+            if (role == null)
+            {
+                throw new ArgumentNullException(nameof(role));
+            }
+
+            await _roleDal.UpdateAsync(role);
         }
     }
 }
