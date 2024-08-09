@@ -28,9 +28,9 @@ namespace BusinessLayer.Concrete
 		{
 			return _userDal.GetListAll();
 		}
-		public bool ValidateUser(string email, string password)///
+		public bool ValidateUser(string Email, string Sifre)///
 		{
-			User user = UserRepository.GetUserByEmailAndPasssword(email, password);
+			User user = _userDal.GetListByType(u => u.Email == Email && u.Sifre == Sifre).FirstOrDefault();
 			return user != null;
 		}
 
@@ -45,6 +45,11 @@ namespace BusinessLayer.Concrete
         }
 
         public Task<User> GetUserByIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task RegisterUserAsync(RegisterViewModel model)
         {
             throw new NotImplementedException();
         }

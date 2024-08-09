@@ -4,10 +4,8 @@
 }
 
 
-@{
-	Layout = null;
-}
-
+@* <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+ *@
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,7 +32,11 @@
 			<h1><span class="image"></span><label>Ö</label>ğrenci <label>K</label>imlik <label>B</label>aşvuru <label>F</label>ormu</h1>
 		</div>
 		<div class="agile-form">
-			<form action="" method="get">
+			<form action="" method="post">
+				<div class="agile-profile">
+					<p>Öğrenci Numarası</p>
+					<input type="text" name="OgrNo" placeholder="Numara" required="">
+				</div>
 				<div class="agile-email">
 					<p>email-adres</p>
 					<input type="email" name="Email" placeholder="email-adres" required="">
@@ -43,36 +45,41 @@
 					<p>Şifre</p>
 					<input type="password" name="Sifre" placeholder="Şifre" required="">
 				</div>
-				<div class="agile-profile">
+				@* <div class="agile-profile">
 					<p>Başvuru Nedeni:</p>
-					<select>
+					<select name="BasvuruNedeni">
 						<option value="" label="Seçiniz" selected="selected">Seçiniz</option>
 						<option>Kayıp</option>
 						<option>Çalıntı</option>
 						<option>Eski</option>
 						<option>Diğer</option>
 					</select>
-				</div>
+				</div> *@
 				<div class="agile-fname">
-					<p>Ad Soyad</p>
-					<input type="text" name="username" placeholder="Ad Soyad">
+					<p>Adınız</p>
+					<input type="text" name="Ad" placeholder="Ad">
 				</div>
 				<div class="agile-lname">
-					<p>Adres</p>
-					<input type="text" name="adres" placeholder="Adres">
+					<p>Soyadınız</p>
+					<input type="text" name="Soyad" placeholder="Soyad">
 				</div>
 
 				<div class="clear"></div>
 				<div class="agile-profile">
 					<p>Fotoğraf Seçin</p>
-					<input type="file" name="fotoğraf" accept="image/*">
-				</div>
-				<div class="agile-submit">
-					<input type="submit" value="Gönder">
+					<input type="file" name="Foto" accept="image/*">
 				</div>
 				<div class="agile-profile">
+				<p>Adres</p>
+				<input type="text" name="Adres" placeholder="Adres" required="">
+		</div>
+				@* <div class="agile-submit">
+					<input type="submit" value="Gönder">
+				</div> *@
+				<div class="agile-profile">
 					<p>Bölümünüz</p>
-					<select>
+					@* <input type="text" name="Bolum" placeholder="Bolum" required=""> *@
+					<select name="Bolum">
 						<option value="" label="Seçiniz" selected="selected">Seçiniz</option>
 						<option>Adli Blilimler</option>
 						<option>Beden Eğitimi ve Spor Öğretmenliği</option>
@@ -93,7 +100,7 @@
 					<div class="clear"></div>
 				</div>
 
-				<div class="agile-submit">
+				<div class="agile-submit" id="btn1">
 					<input type="submit" value="Başvur">
 				</div>
 			</form>
@@ -101,6 +108,16 @@
 		<div class="clear"></div>
 		<footer>
 		</footer>
+
+	@* <script>
+		$('btn1').click(function () {
+			swal("Onaylandı!", "Başvurunuz Alınmıştır!", "success");
+
+		});
+
+	</script> *@
+
+
 
 	</section>
 

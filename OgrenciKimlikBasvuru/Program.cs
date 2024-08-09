@@ -2,6 +2,8 @@ using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.Repositories;
+using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,12 +18,14 @@ builder.Services.AddScoped<UserRepository/*, UserRepository*/>();
 builder.Services.AddScoped<IUserService, UserService>();
 //builder.Services.AddTransient<IRoleService, RoleService>();//
 builder.Services.AddScoped<IRoleService, RoleService>();
+builder.Services.AddSingleton<IPasswordHasher<User>, PasswordHasher<User>>();
+
 
 builder.Services.AddAuthentication("CookieAuthentication")
     .AddCookie("CookieAuthentication", options =>
     {
-        options.Cookie.Name = "UserLoginCookie"; // Çerez adý
-        options.LoginPath = "/Login/GirisYap"; // Giriþ sayfasý yolu
+        options.Cookie.Name = "UserLoginCookie";
+        options.LoginPath = "/Login/GirisYap"; 
         options.AccessDeniedPath = "/Home/AccessDenied"; 
     });
 

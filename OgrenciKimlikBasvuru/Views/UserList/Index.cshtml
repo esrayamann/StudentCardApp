@@ -29,30 +29,40 @@
 
 <br />
 <table class="table table-bordered">
-    <tr>
-        <th>Id</th>
-        <th>Ad</th>
-        <th>Soyad</th>
-        <th>Öğrenci No</th>
-        <th>Bölüm</th>
-        <th>Email</th>
-        <th>Adres</th>
-        <th>Rolü</th>
-        <th>Rol Güncelleme</th>
-        @*   <th>Detaylar</th> *@
-    </tr>
-    @foreach (var item in Model)
-    {
         <tr>
-            <td>@item.Id</td>
-            <td>@item.Ad</td>
-            <td>@item.Soyad</td>
-            <td>@item.OgrNo</td>
-            <td>@item.Bolum</td>
-            <td>@item.Email</td>
-            <td>@item.Adres</td>
-           
+            <th>Id</th>
+            <th>Ad</th>
+            <th>Soyad</th>
+            <th>Öğrenci No</th>
+            <th>Bölüm</th>
+            <th>Email</th>
+            <th>Adres</th>
+            <th>Rolü</th>
+            <th>Rol Güncelleme</th>
+            @*   <th>Detaylar</th> *@
         </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Ad</td>
+                <td>@item.Soyad</td>
+                <td>@item.OgrNo</td>
+                <td>@item.Bolum</td>
+                <td>@item.Email</td>
+                <td>@item.Adres</td>
+                @* <td>
+                    @foreach (var i in item.UserRoles)
+                    {
+                        <span>@i.Role.Ad</span>
+
+                    }
+                </td>
+                <td>
+                    <a href="@Url.Action("EditRole", new { id = item.Id })">Rol Güncelle</a>
+                </td> *@
+            </tr>
+           
     }
 </table>
 </body>

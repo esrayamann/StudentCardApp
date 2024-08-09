@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+
 namespace BusinessLayer.Abstract
 {
 	public interface IUserService
@@ -12,7 +14,8 @@ namespace BusinessLayer.Abstract
 		void UserAdd(User user);
         Task<User> GetUserByIdAsync(int id);
         Task<IEnumerable<User>> GetAllUsersAsync();
+        Task RegisterUserAsync(RegisterViewModel model);
 
-    
+
     }
 }

@@ -17,6 +17,16 @@ namespace DataAccessLayer.Concrete
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
+        public DbSet<Application> Applications { get; set; }
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			// User ile Application arasındaki ilişki tanımladık!!!
+			modelBuilder.Entity<Application>()
+				.HasOne(a => a.User)
+				.WithMany(u => u.Applications)
+				.HasForeignKey(a => a.UserId);
 
-    }
+			base.OnModelCreating(modelBuilder);
+		}
+	}
 }
