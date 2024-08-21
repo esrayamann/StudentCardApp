@@ -13,9 +13,9 @@ namespace BusinessLayer.Abstract
 	{
 		void UserAdd(User user);
         Task<User> GetUserByIdAsync(int id);
+        Task<IEnumerable<Role>> AllRolesAsync();
         Task<IEnumerable<User>> GetAllUsersAsync();
-        Task RegisterUserAsync(RegisterViewModel model);
-
-
+        Task RegisterUserAsync(ApplicationViewModel model);
+        Task GetAllRolesAsync();
     }
 }

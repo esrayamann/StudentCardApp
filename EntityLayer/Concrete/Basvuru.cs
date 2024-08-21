@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EntityLayer.Concrete
 {
-    public class Application
+    public class Basvuru
     {
         [Key]
         public int Id { get; set; }

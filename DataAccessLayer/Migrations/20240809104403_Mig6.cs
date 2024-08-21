@@ -5,18 +5,25 @@
 namespace DataAccessLayer.Migrations
 {
     /// <inheritdoc />
-    public partial class application1 : Migration
+    public partial class Mig6 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-
+            migrationBuilder.DropColumn(
+                name: "BasvuruNedeni",
+                table: "Users");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-
+            migrationBuilder.AddColumn<string>(
+                name: "BasvuruNedeni",
+                table: "Users",
+                type: "nvarchar(max)",
+                nullable: false,
+                defaultValue: "");
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model List<User>
+﻿@model List<Basvuru>
 @using BusinessLayer.Concrete
 @using DataAccessLayer.Concrete
 @using EntityLayer.Concrete
@@ -7,8 +7,7 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_SidebarLayout.cshtml";
 }
-<h1>Kullanıcıların Listesi</h1>
-
+<h1>Başvuranların Listesi</h1>
 <html>
 <head>
     <style>
@@ -29,8 +28,8 @@
 </head>
 <body>
 
-<br />
-<table class="table table-bordered">
+    <br />
+    <table class="table table-bordered">
         <tr>
             <th>Id</th>
             <th>Ad</th>
@@ -38,32 +37,25 @@
             <th>Öğrenci No</th>
             <th>Bölüm</th>
             <th>Email</th>
-            <th>Rolü</th>
-            <th>Rol Güncelleme</th>
+            <th>Teslimat Adresi</th>
+            <th>Başvuru Sebebi</th>
             @*   <th>Detaylar</th> *@
         </tr>
         @foreach (var item in Model)
         {
             <tr>
                 <td>@item.Id</td>
-                <td>@item.Ad</td>
-                <td>@item.Soyad</td>
-                <td>@item.OgrNo</td>
-                <td>@item.Bolum</td>
-                <td>@item.Email</td>
-                <td>
-                    @foreach (var role in item.UserRoles)
-                    {
-                        @role.Role.Ad <br />
-                    }
-                </td>
-@*                 <td>
-                    <a href="@Url.Action("EditRole", "UserList", new { userId = User.Id })">Rol Güncelle</a>
-
-                </td> *@
+                <td>@item.User.Ad</td>
+                <td>@item.User.Soyad</td>
+                <td>@item.User.OgrNo</td>
+                <td>@item.User.Bolum</td>
+                <td>@item.User.Email</td>
+                <td>@item.Adres</td>
+                <td>@item.BasvuruNedeni</td>
             </tr>
-           
-    }
-</table>
+
+        }
+    </table>
 </body>
 </html>
+

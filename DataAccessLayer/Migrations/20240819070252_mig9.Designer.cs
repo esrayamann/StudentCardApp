@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20240809083205_Basvuru")]
-    partial class Basvuru
+    [Migration("20240819070252_mig9")]
+    partial class mig9
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,31 +33,11 @@ namespace DataAccessLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Ad")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Adres")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("BasvuruNedeni")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Bolum")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Foto")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("OgrNo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Soyad")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -69,6 +49,32 @@ namespace DataAccessLayer.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Applications");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.Basvuru", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Adres")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BasvuruNedeni")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Basvurular");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Role", b =>
@@ -97,14 +103,6 @@ namespace DataAccessLayer.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Ad")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Adres")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BasvuruNedeni")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -174,6 +172,17 @@ namespace DataAccessLayer.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("EntityLayer.Concrete.Basvuru", b =>
+                {
+                    b.HasOne("EntityLayer.Concrete.User", "User")
+                        .WithMany("Basvurular")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("EntityLayer.Concrete.UserRole", b =>
                 {
                     b.HasOne("EntityLayer.Concrete.Role", "Role")
@@ -201,6 +210,8 @@ namespace DataAccessLayer.Migrations
             modelBuilder.Entity("EntityLayer.Concrete.User", b =>
                 {
                     b.Navigation("Applications");
+
+                    b.Navigation("Basvurular");
 
                     b.Navigation("UserRoles");
                 });

@@ -1,6 +1,7 @@
 ﻿using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -20,12 +21,12 @@ namespace BusinessLayer.Abstract
         {
             _context = context;
             _passwordHasher = passwordHasher;
-
         }
 
         public async Task<IEnumerable<User>> GetAllUsersAsync()
         {
-            return await _context.Users.ToListAsync();
+            return await _context.Users.Include(u => u.UserRoles)
+            .ThenInclude(ur => ur.Role).ToListAsync();
 
         }
 
@@ -34,7 +35,7 @@ namespace BusinessLayer.Abstract
             return await _context.Users.FindAsync(id);
         }
 
-        public async Task RegisterUserAsync(RegisterViewModel model)
+        public async Task RegisterUserAsync(ApplicationViewModel model)
         {
             if (model.Sifre != model.ConfirmPassword)
             {
@@ -71,6 +72,17 @@ namespace BusinessLayer.Abstract
         public void UserAdd(User user)
         {
             throw new NotImplementedException();
-        }       
+        }
+
+        public Task GetAllRolesAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<IEnumerable<Role>> AllRolesAsync()
+        {
+            return await _context.Roles.ToListAsync();
+        }
+
     }
 }

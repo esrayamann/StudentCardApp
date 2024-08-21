@@ -34,7 +34,7 @@ namespace BusinessLayer.Concrete
 			return user != null;
 		}
 
-        public Task<User> GetRoleByIdAsync(int id)
+        public Task<Role> GetRoleByIdAsync(int id)
         {
             throw new NotImplementedException();
         }
@@ -49,7 +49,17 @@ namespace BusinessLayer.Concrete
             throw new NotImplementedException();
         }
 
-        public Task RegisterUserAsync(RegisterViewModel model)
+        public Task RegisterUserAsync(ApplicationViewModel model)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task GetAllRolesAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<Role>> AllRolesAsync()
         {
             throw new NotImplementedException();
         }

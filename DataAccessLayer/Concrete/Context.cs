@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace DataAccessLayer.Concrete
 {
     public class Context:DbContext
-    {
+    {       
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("server=LAPTOP-IEH31APK;database=StudentCard;user id=sa;password=1234;TrustServerCertificate=True;");
@@ -18,15 +18,14 @@ namespace DataAccessLayer.Concrete
         public DbSet<Role> Roles { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<Application> Applications { get; set; }
-		protected override void OnModelCreating(ModelBuilder modelBuilder)
-		{
-			// User ile Application arasındaki ilişki tanımladık!!!
-			modelBuilder.Entity<Application>()
-				.HasOne(a => a.User)
-				.WithMany(u => u.Applications)
-				.HasForeignKey(a => a.UserId);
-
-			base.OnModelCreating(modelBuilder);
-		}
-	}
+        public DbSet<Basvuru> Basvurular {  get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Basvuru>()
+                .HasOne(a => a.User)
+                .WithMany(u => u.Basvurular)
+                .HasForeignKey(a => a.UserId);
+            base.OnModelCreating(modelBuilder);
+        }
+    }
 }

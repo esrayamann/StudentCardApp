@@ -30,7 +30,7 @@ namespace StudentCardApp.Controllers
 			return View();
 		}
 		[HttpPost]
-		public async Task<IActionResult> Register(BusinessLayer.Abstract.RegisterViewModel model)
+		public async Task<IActionResult> Register(BusinessLayer.Abstract.ApplicationViewModel model)
 		{
 			if (ModelState.IsValid)
 			{
@@ -58,7 +58,28 @@ namespace StudentCardApp.Controllers
 			}
 			return View();
 		}
+        public async Task<IActionResult> UploadPhoto(IFormFile Foto)
+        {
+            if (Foto != null && Foto.Length > 0)
+            {
+                using (var memoryStream = new MemoryStream())
+                {
+                    await Foto.CopyToAsync(memoryStream);
+                    byte[] photoBytes = memoryStream.ToArray();
+                    string base64Photo = Convert.ToBase64String(photoBytes);
 
+                    // Veritabanına kaydedin
+                    SavePhotoToDatabase(base64Photo);
+                }
+            }
 
-	}
+            return View();
+        }
+
+        private void SavePhotoToDatabase(string base64Photo)
+        {
+            // Veritabanı işlem kodları burada olacak
+        }
+
+    }
 }

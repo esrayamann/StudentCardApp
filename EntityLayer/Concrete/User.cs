@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -15,13 +16,13 @@ namespace EntityLayer.Concrete
         public string Email { get; set; }
         public string OgrNo { get; set; }
         public string Bolum { get; set; }
-        public string Adres { get; set; }
+        //public string Adres { get; set; }
         public string Sifre { get; set; }
-        //public string BasvuruNedeni { get; set; }
         public string Foto { get; set; }
 		public DateTime CreatedDate { get; set; }
 		public ICollection<UserRole> UserRoles { get; set; }
 		public virtual ICollection<Application> Applications { get; set; }
-
+		public virtual ICollection<Basvuru> Basvurular { get; set; }
+        
 	}
 }
