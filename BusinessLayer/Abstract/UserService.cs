@@ -1,5 +1,6 @@
 ﻿using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -84,5 +85,58 @@ namespace BusinessLayer.Abstract
             return await _context.Roles.ToListAsync();
         }
 
+        public async Task<bool> UploadPhotoAsync(int userId, IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+                return false;
+
+            var user = _context.Users.FirstOrDefault(u => u.Id == userId);
+            if (user == null)
+                return false;
+
+            using (var ms = new MemoryStream())
+            {
+                await file.CopyToAsync(ms);
+                var fileBytes = ms.ToArray();
+                user.Foto = Convert.ToBase64String(fileBytes); // Base64 formatına çevirmek
+            }
+
+            _context.SaveChanges();
+
+            return true;
+        }
+        public async Task<string> GetPhotoAsync(int userId)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == userId);
+            if (user == null || string.IsNullOrEmpty(user.Foto))
+            {
+                return null;
+            }
+
+            return user.Foto;  // Base64 string formatındaki fotoğrafı döner.
+        }
+        //public async Task UpdateUserRolesAsync(int userId, object selectedRoles)
+        //{
+        //    var user = await _context.Users.Include(u => u.UserRoles)
+        //                                      .FirstOrDefaultAsync(u => u.Id == userId);
+
+        //    if (user != null)
+        //    {
+        //        // Mevcut rollerini temizle
+        //        user.UserRoles.Clear();
+
+        //        // Yeni roller ekle
+        //        foreach (var roleId in newRoleIds)
+        //        {
+        //            var role = await _context.Roles.FindAsync(roleId);
+        //            if (role != null)
+        //            {
+        //                user.UserRoles.Add(new UserRole { UserId = userId, RoleId = roleId });
+        //            }
+        //        }
+
+        //        await _context.SaveChangesAsync();
+        //    }
+        //}
     }
 }

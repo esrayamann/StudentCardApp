@@ -3,6 +3,7 @@ using DataAccessLayer.Abstract;
 using DataAccessLayer.EntityFramework;
 using DataAccessLayer.Repositories;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,5 +64,25 @@ namespace BusinessLayer.Concrete
         {
             throw new NotImplementedException();
         }
+
+        public Task<bool> UploadPhotoAsync(int userId, IFormFile file)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<string> GetPhotoAsync(int userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        //public Task UpdateUserRolesAsync(int userId, object selectedRoles,List<int> newRoleIds)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public Task UpdateUserRolesAsync(int userId, object selectedRoles)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

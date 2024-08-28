@@ -1,11 +1,11 @@
 ﻿@model StudentCardApp.Models.BasvuruViewModel
- @{
-    ViewData["Title"] = "Index";
+
+@{
+    ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_KullaniciLayout.cshtml";
 }
 
-<h1>Başvur Sayfası</h1>
-
+<h1>Create</h1>
 
 @{
 	Layout = null;
@@ -41,27 +41,27 @@
 		</div>
 		<div class="agile-form">
 			<form action="" method="post">
-				
+
 
 				<div class="agile-profile">
-				<p>Başvuru Nedeni:</p>
-				<select name="BasvuruNedeni">
-				<option value="" label="Seçiniz" selected="selected">Seçiniz</option>
-				<option>Kayıp</option>
-				<option>Çalıntı</option>
-				<option>Eski</option>
-				<option>Diğer</option>
-				</select>
+					<p>Başvuru Nedeni:</p>
+					<select name="BasvuruNedeni">
+						<option value="" label="Seçiniz" selected="selected">Seçiniz</option>
+						<option>Kayıp</option>
+						<option>Çalıntı</option>
+						<option>Eski</option>
+						<option>Diğer</option>
+					</select>
 				</div>
-				
 
-				
+
+
 				<div class="agile-profile">
 					<p>Adres</p>
 					<input type="text" name="Adres" placeholder="Adres" required="">
 				</div>
-				
-			
+
+
 
 				<div class="agile-submit" id="btn2">
 					<input type="submit" value="Başvur">
@@ -86,5 +86,3 @@
 
 </body>
 </html>
-
-

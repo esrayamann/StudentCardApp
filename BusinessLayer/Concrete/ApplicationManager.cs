@@ -32,17 +32,21 @@ namespace BusinessLayer.Concrete
 
         }
         
-        public async Task ApplicationUserAsync(ApplicationViewModel model,int userId)
-        {
-            var application = new Application
-            {
-                BasvuruNedeni = model.BasvuruNedeni,
-                Adres = model.Adres,
-                UserId = userId
-            };
-            await _applicationDal.InsertAsync(application);
+        //public async Task ApplicationUserAsync(ApplicationViewModel model,int userId)
+        //{
+        //    var application = new Application
+        //    {
+        //        BasvuruNedeni = model.BasvuruNedeni,
+        //        Adres = model.Adres,
+        //        UserId = userId
+        //    };
+        //    await _applicationDal.InsertAsync(application);
 
+        //}
+
+        public Task ApplicationUserAsync(Basvuru basvuru)
+        {
+            throw new NotImplementedException();
         }
-       
     }
 }

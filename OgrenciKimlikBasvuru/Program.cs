@@ -4,12 +4,17 @@ using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.Repositories;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using StudentCardApp.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+	.AddCookie(options =>
+	{
+		options.LoginPath = "/GirisYap/Login";
+	});
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddControllersWithViews();
@@ -39,6 +44,7 @@ builder.Services.AddAuthentication("CookieAuthentication")
 var app = builder.Build();
 //builder.Services.AddDbContext<Context>(options =>
 //    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 
 
 // Configure the HTTP request pipeline.

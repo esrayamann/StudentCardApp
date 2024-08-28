@@ -17,20 +17,11 @@ namespace BusinessLayer.Abstract
         public ApplicationService(Context context)
         {
             _context = context;
-        }
-
-        public async Task ApplicationUserAsync(ApplicationViewModel model, int userId)
-        {
-            var application = new Application
-            {
-                BasvuruNedeni = model.BasvuruNedeni,
-                Adres = model.Adres,
-                UserId = userId
-            };
-
+        }  
+        public async Task ApplicationUserAsync(Basvuru basvuru) {
             try
             {
-                _context.Applications.Add(application);
+                _context.Basvurular.Add(basvuru);
                 await _context.SaveChangesAsync();
             }
             catch (Exception ex)
@@ -38,40 +29,9 @@ namespace BusinessLayer.Abstract
                 Console.WriteLine($"Veri kaydedilirken bir hata oluştu: {ex.Message}");
                 throw;
             }
-
-            // Kullanıcının kimlik doğrulamasının yapıldığını doğrulama
-            //if (User.Identity.IsAuthenticated)
-            //{
-            //    // Kullanıcının ID'sini Claims'den alıyoruz
-            //    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-            //    // Application modelini oluşturuyoruz ve UserId'yi set ediyoruz
-            //    var application = new Application
-            //    {
-            //        BasvuruNedeni = model.BasvuruNedeni,
-            //        Adres = model.Adres,
-            //        UserId = int.Parse(userId)  // Kullanıcının ID'sini burada set ediyoruz
-            //    };
-
-            //    try
-            //    {
-            //        _context.Applications.Add(application);
-            //        await _context.SaveChangesAsync();
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        Console.WriteLine($"Veri kaydedilirken bir hata oluştu: {ex.Message}");
-            //        throw;
-            //    }
-            //}
-            //else
-            //{
-            //    throw new Exception("Kullanıcı kimliği doğrulanmadı.");
-            //}
-        }
+        }           
         public async Task<IEnumerable<Basvuru>> GetAllApplicationsAsync()
 		{
-			//return await _context.Basvurular.ToListAsync();
             return await _context.Basvurular.Include(b => b.User).ToListAsync();
 
         }

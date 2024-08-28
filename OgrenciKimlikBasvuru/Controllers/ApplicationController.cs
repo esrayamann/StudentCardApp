@@ -1,51 +1,64 @@
-﻿using DataAccessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
+using StudentCardApp.Models;
 using System.Security.Claims;
 
 namespace StudentCardApp.Controllers
 {
     public class ApplicationController : Controller
     {
-        private readonly Context _context;
-        public ApplicationController(Context context)
+        private readonly IApplicationService _applicationService;
+
+        public ApplicationController(IApplicationService applicationService)
         {
-            _context = context;
+            _applicationService = applicationService;
+        }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> ApplicationUserAsync(Application model)
+        public async Task<IActionResult> Create(BasvuruViewModel model)
         {
             if (ModelState.IsValid)
             {
-                if (User.Identity.IsAuthenticated)
+                var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+
+                if (userIdClaim == null)
                 {
-                    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-                    if (int.TryParse(userId, out int UserId))
+                    return RedirectToAction("GirisYap", "Login");
+                }
+
+                if (int.TryParse(userIdClaim.Value, out int userId))
+                {
+                    var basvuru = new Basvuru
                     {
-                        model.UserId = UserId;
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("", "Kullanıcı kimliği geçersiz.");
-                        return View(model);
-                    }
+                        UserId = userId,
+                        BasvuruNedeni = model.BasvuruNedeni,
+                        Adres = model.Adres
+                    };
+
+                    await _applicationService.ApplicationUserAsync(basvuru);
+
+                    return RedirectToAction("Success");
                 }
                 else
                 {
-                    return RedirectToAction("Login", "GirisYap");
+                    ModelState.AddModelError("", "Geçersiz kullanıcı kimliği.");
                 }
-
-
-
-                _context.Applications.Add(model);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("Index", "Kullanici");
             }
 
             return View(model);
         }
 
+        public IActionResult Success()
+        {
+            return View();
+        }
         public IActionResult Index()
         {
             return View();

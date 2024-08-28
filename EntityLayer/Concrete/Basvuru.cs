@@ -15,5 +15,6 @@ namespace EntityLayer.Concrete
         public virtual User User { get; set; }
         public string Adres { get; set; }
         public string BasvuruNedeni { get; set; }
+        public DateTime CreatedDate { get; set; }= DateTime.Now;
     }
 }

@@ -39,8 +39,7 @@
             <th>Bölüm</th>
             <th>Email</th>
             <th>Rolü</th>
-            <th>Rol Güncelleme</th>
-            @*   <th>Detaylar</th> *@
+@*             <th>Rol Güncelleme</th> *@            
         </tr>
         @foreach (var item in Model)
         {
@@ -57,8 +56,8 @@
                         @role.Role.Ad <br />
                     }
                 </td>
-@*                 <td>
-                    <a href="@Url.Action("EditRole", "UserList", new { userId = User.Id })">Rol Güncelle</a>
+              @*   <td>
+                    <a href='@Url.Action("EditRole", "UserList", new { userId = User })'>Rol Güncelle</a>
 
                 </td> *@
             </tr>

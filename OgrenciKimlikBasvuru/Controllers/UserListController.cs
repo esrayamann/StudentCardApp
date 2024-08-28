@@ -55,21 +55,21 @@ namespace StudentCardApp.Controllers
         //    }
         //    return RedirectToAction("Index");
         //}
-        public async Task<IActionResult> EditRole(int userId)
-        {
-            var user = await _userService.GetUserByIdAsync(userId);
-            var allRoles = await _userService.AllRolesAsync();
+        //public async Task<IActionResult> EditRole(int userId)
+        //{
+        //    var user = await _userService.GetUserByIdAsync(userId);
+        //    var allRoles = await _userService.AllRolesAsync();
 
-            var model = new EditRoleViewModel
-            {
-                UserId = user.Id,
-                UserEmail = user.Email,
-                CurrentRoles = user.UserRoles.Select(ur => ur.RoleId).ToList(),
-                AllRoles = allRoles.ToList()
-            };
+        //    var model = new EditRoleViewModel
+        //    {
+        //        UserId = user.Id,
+        //        UserEmail = user.Email,
+        //        CurrentRoles = user.UserRoles.Select(ur => ur.RoleId).ToList(),
+        //        AllRoles = allRoles.ToList()
+        //    };
 
-            return View(model);
-        }
+        //    return View(model);
+        //}
 
         //[HttpPost]
         //public async Task<IActionResult> EditRole(EditRoleViewModel model)

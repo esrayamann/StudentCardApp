@@ -1,4 +1,5 @@
 ﻿using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,5 +18,10 @@ namespace BusinessLayer.Abstract
         Task<IEnumerable<User>> GetAllUsersAsync();
         Task RegisterUserAsync(ApplicationViewModel model);
         Task GetAllRolesAsync();
+        Task<bool> UploadPhotoAsync(int userId, IFormFile file);
+        Task<string> GetPhotoAsync(int userId);
+
+
+        //Task UpdateUserRolesAsync(int userId, object selectedRoles);
     }
 }
