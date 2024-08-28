@@ -30,7 +30,9 @@ namespace StudentCardApp.Controllers
 
                 if (userIdClaim == null)
                 {
-                    return RedirectToAction("GirisYap", "Login");
+					ModelState.AddModelError("", "Kullanıcı kimliği alınamadı. Giriş yapmanız gerekiyor.");
+
+					return RedirectToAction("GirisYap", "Login");
                 }
 
                 if (int.TryParse(userIdClaim.Value, out int userId))

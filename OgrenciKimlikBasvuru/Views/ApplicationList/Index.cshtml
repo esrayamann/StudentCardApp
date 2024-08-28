@@ -39,6 +39,7 @@
             <th>Email</th>
             <th>Teslimat Adresi</th>
             <th>Başvuru Sebebi</th>
+            <th>Başvuru Zamanı</th>
             @*   <th>Detaylar</th> *@
         </tr>
         @foreach (var item in Model)
@@ -52,6 +53,7 @@
                 <td>@item.User.Email</td>
                 <td>@item.Adres</td>
                 <td>@item.BasvuruNedeni</td>
+                <td>@item.CreatedDate</td>
             </tr>
 
         }

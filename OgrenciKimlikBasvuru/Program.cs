@@ -37,7 +37,8 @@ builder.Services.AddAuthentication("CookieAuthentication")
     .AddCookie("CookieAuthentication", options =>
     {
         options.Cookie.Name = "UserLoginCookie";
-        options.LoginPath = "/Login/GirisYap"; 
+        options.LoginPath = "/Login/GirisYap";
+        options.LogoutPath = "/Login/Logout";   
         options.AccessDeniedPath = "/Home/AccessDenied"; 
     });
 
