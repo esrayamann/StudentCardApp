@@ -75,14 +75,19 @@ namespace BusinessLayer.Concrete
             throw new NotImplementedException();
         }
 
-        //public Task UpdateUserRolesAsync(int userId, object selectedRoles,List<int> newRoleIds)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        public void UpdateUserRole(int userId, int roleId)
+        {
+            throw new NotImplementedException();
+        }
 
-        //public Task UpdateUserRolesAsync(int userId, object selectedRoles)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        public Task UpdateUserRolesAsync(int userId,/* object selectedRoles,*/ List<int> newRoleIds)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task UpdateUserRoleAsync(int userId, object selectedRoles)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -37,5 +37,11 @@ namespace StudentCardApp.Controllers
 			var values = um.GetList();
 			return View(values);
 		}
-	}
+        //[HttpPost]
+        //public IActionResult UpdateUserRole(int userId, int roleId)
+        //{
+        //    _userService.UpdateUserRole(userId, roleId);
+        //    return RedirectToAction("Index","Admin");
+        //}
+    }
 }

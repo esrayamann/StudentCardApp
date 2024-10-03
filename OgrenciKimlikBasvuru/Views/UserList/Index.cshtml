@@ -39,7 +39,7 @@
             <th>Bölüm</th>
             <th>Email</th>
             <th>Rolü</th>
-@*             <th>Rol Güncelleme</th> *@            
+            <th>Rol Güncelleme</th>            
         </tr>
         @foreach (var item in Model)
         {
@@ -56,10 +56,24 @@
                         @role.Role.Ad <br />
                     }
                 </td>
-              @*   <td>
-                    <a href='@Url.Action("EditRole", "UserList", new { userId = User })'>Rol Güncelle</a>
+                <td>
+                    <a href="/Admin/UpdateRole/@item.Id" class="btn btn-primary">Rol Güncelle</a>
 
-                </td> *@
+                  @*   <form asp-action="UpdateUserRole" method="post">
+                        <input type="hidden" name="userId" value="@item.Id" />
+                        <select name="roleId"> *@
+                            @* @foreach (var role in item.UserRoles)
+                            {
+                                <option value="@role.RoleId">@role.Id</option>
+                            } *@
+                             @* @foreach (var role in ViewBag.AllRoles)
+                            {
+                                <option value="@role.RoleId">@role.Ad</option>
+                            } *@
+                       @*  </select>
+                        <button type="submit">Güncelle</button>
+                    </form> *@
+                </td> 
             </tr>
            
     }

@@ -12,5 +12,7 @@ namespace DataAccessLayer.Abstract
         Task<Basvuru> GetByIdAsync(int id);
         Task<IEnumerable<Basvuru>> GetListAsync();
         Task InsertAsync(Application application);
+        Task<List<Basvuru>> GetListAsync(Func<Basvuru, bool> filter);//
+
     }
 }

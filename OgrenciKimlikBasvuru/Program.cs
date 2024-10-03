@@ -19,11 +19,18 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 builder.Services.AddControllers();
 builder.Services.AddControllersWithViews();
 
+
+
 builder.Services.AddDbContext<Context>();//
+// Program.cs veya Startup.cs'deki ConfigureServices metoduna ekleyin:
+//builder.Services.AddDbContext<Context>(options =>
+//    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));//þimdi 17.09.2024 14:33 ekledim
+builder.Services.AddScoped<UserRoleRepository>();////////
+builder.Services.AddScoped<IRoleRepository, RoleRepository>(); // Use correct interface
 
 builder.Services.AddScoped<UserRepository/*, UserRepository*/>();
 builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddTransient<IRoleService, RoleService>();//
+//builder.Services.AddTransient<IRoleService, RoleService>();//
 builder.Services.AddScoped<IRoleService, RoleService>();
 builder.Services.AddScoped<IApplicationService, ApplicationService>();
 //builder.Services.AddScoped<IUserService, UserManager>();
@@ -43,8 +50,7 @@ builder.Services.AddAuthentication("CookieAuthentication")
     });
 
 var app = builder.Build();
-//builder.Services.AddDbContext<Context>(options =>
-//    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 
 
 
@@ -52,7 +58,6 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 

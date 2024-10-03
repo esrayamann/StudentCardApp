@@ -20,8 +20,9 @@ namespace BusinessLayer.Abstract
         Task GetAllRolesAsync();
         Task<bool> UploadPhotoAsync(int userId, IFormFile file);
         Task<string> GetPhotoAsync(int userId);
+        void UpdateUserRole(int userId, int roleId);
+        Task UpdateUserRolesAsync(int userId, /*object selectedRoles,*/ List<int> newRoleIds);
 
-
-        //Task UpdateUserRolesAsync(int userId, object selectedRoles);
+        Task UpdateUserRoleAsync(int userId, object selectedRoles);
     }
 }

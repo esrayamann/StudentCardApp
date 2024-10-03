@@ -11,6 +11,9 @@ namespace BusinessLayer.Abstract
 	{
 		Task<Basvuru> GetApplicationByIdAsync(int id);
 		Task<IEnumerable<Basvuru>> GetAllApplicationsAsync();
+        Task<IEnumerable<Basvuru>> GetApplicationsByUserIdAsync(int userId);//
+        Task<IEnumerable<Basvuru>> GetApplicationsByUserIdAsync(string userId);
+
         //Task ApplicationUserAsync(ApplicationViewModel model,int userId);
         Task ApplicationUserAsync(Basvuru basvuru);
 

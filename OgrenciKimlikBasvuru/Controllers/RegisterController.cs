@@ -80,6 +80,10 @@ namespace StudentCardApp.Controllers
         {
             // Veritabanı işlem kodları burada olacak
         }
+        public IActionResult Success()
+        {
+            return View();
+        }
 
     }
 }

@@ -14,5 +14,6 @@ namespace BusinessLayer.Abstract
         Task AddRoleAsync(Role role);
         Task UpdateRoleAsync(Role role);
         Task DeleteRoleAsync(int id);
+        Task<IEnumerable<Role>> AllRolesAsync();//
     }
 }

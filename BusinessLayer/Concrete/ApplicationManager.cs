@@ -48,5 +48,15 @@ namespace BusinessLayer.Concrete
         {
             throw new NotImplementedException();
         }
+
+        public Task<IEnumerable<Basvuru>> GetApplicationsByUserIdAsync(int userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<Basvuru>> GetApplicationsByUserIdAsync(string userId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -21,6 +21,11 @@ namespace DataAccessLayer.EntityFramework
             throw new NotImplementedException();
         }
 
+        public Task<List<Basvuru>> GetListAsync(Func<Basvuru, bool> filter)//
+        {
+            throw new NotImplementedException();
+        }
+
         public Task InsertAsync(Application application)
         {
             throw new NotImplementedException();

@@ -55,8 +55,14 @@ namespace StudentCardApp.Controllers
             }
 
             return View(model);
-        }
+        }       
 
+        public async Task<IActionResult> MyApplications()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var basvurular = await _applicationService.GetApplicationsByUserIdAsync(userId);
+            return View(basvurular);
+        }//
         public IActionResult Success()
         {
             return View();

@@ -50,5 +50,9 @@ namespace BusinessLayer.Abstract
             _context.Roles.Update(role);
             await _context.SaveChangesAsync();
         }
+        public async Task<IEnumerable<Role>> AllRolesAsync()
+        {
+            return await _context.Roles.ToListAsync();  // Role tablosundaki tüm veriyi çek
+        }//
     }
 }

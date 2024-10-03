@@ -27,6 +27,11 @@ namespace BusinessLayer.Concrete
             await _roleDal.InsertAsync(role);
         }
 
+        public Task<IEnumerable<Role>> AllRolesAsync()
+        {
+            throw new NotImplementedException();
+        }//
+
         public async Task DeleteRoleAsync(int id)
         {
             var role = await _roleDal.GetByIdAsync(id);

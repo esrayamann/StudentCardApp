@@ -1,0 +1,38 @@
+﻿@model StudentCardApp.Models.UpdateRoleViewModel
+@{
+    ViewData["Title"] = "UpdateRole";
+    Layout = "~/Views/Shared/_SidebarLayout.cshtml";
+}
+
+<h1>Rol Güncelle</h1>
+
+<form asp-action="UpdateRole" method="post">
+    <input type="hidden" asp-for="UserId" />
+    <div>
+        <label>Mevcut Roller</label>
+        @* <select asp-for="SelectedRoles" multiple class="form-control">
+            @foreach (var role in Model.AllRoles)
+            {
+                <option value="@role.Id" selected="@Model.UserRoles.Contains(role.Id)">
+                    @role.Ad
+                </option>
+            }
+        </select> *@
+        <select asp-for="SelectedRoles" multiple class="form-control">
+            @if (Model.AllRoles != null && Model.AllRoles.Any())
+            {
+                @foreach (var role in Model.AllRoles)
+                {
+                    <option value="@role.Id" selected="@Model.UserRoles.Contains(role.Id)">
+                        @role.Ad
+                    </option>
+                }
+            }
+            else
+            {
+                <option value="">Rol bulunamadı</option>
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">Güncelle</button>
+</form>
